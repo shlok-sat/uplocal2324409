@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uplocal | Automated ROI for Multi Location Brands</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f6fb;
+      --text: #101828;
+      --muted: #475467;
+      --accent: #7f56d9;
+      --accent-dark: #6941c6;
+      --border: #d0d5dd;
+      --surface: #ffffff;
+      --eyebrow: #b54708;
+      --highlight: #eef4ff;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+      font-weight: 500;
+    }
+    .cta {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--text);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 48px;
+      padding: 72px 0;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--eyebrow);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 24px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .hero-ctas {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-secondary {
+      color: var(--accent);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .mockup {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+    }
+    .mockup-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .pin {
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 16px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    section {
+      margin-bottom: 96px;
+    }
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .feature-table th,
+    .feature-table td {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-table tr:last-child td {
+      border-bottom: none;
+    }
+    .logos {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .timeline {
+      display: grid;
+      gap: 20px;
+    }
+    .timeline-step {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .timeline-step strong {
+      font-size: 1.1rem;
+    }
+    .faq {
+      display: grid;
+      gap: 16px;
+    }
+    .faq-item {
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    footer {
+      padding: 64px 0;
+      text-align: center;
+    }
+    footer h2 {
+      margin-bottom: 16px;
+    }
+    footer p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 24px;
+    }
+    footer .hero-ctas {
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">Uplocal</div>
+      <nav>
+        <a href="#product">Product</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#franchises">For Franchises</a>
+        <a href="#resources">Resources</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <button class="cta">Book Demo</button>
+    </header>
+
+    <section class="hero" id="hero">
+      <div>
+        <div class="eyebrow">FOR MULTI LOCATION &amp; FRANCHISE BRANDS</div>
+        <h1>Local marketing at scale — with automated ROI &amp; optimized spend.</h1>
+        <p>Build brand safe templates once, let local teams launch campaigns in minutes, and see per store ROI update automatically. Perfect for retail chains, dealerships, salons, clinics, and any business with 5–500+ locations.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary">Book a Demo</button>
+          <a class="btn-secondary" href="#how-it-works">See How It Works →</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <h3>HQ Performance Overview</h3>
+        <p>Automated ROI calculator • Budget pacing guardrails • Live map</p>
+        <div class="mockup-map">
+          <div class="pin">
+            <strong>Bangalore</strong>
+            <p>ROI 4.3x • Spend +8%</p>
+          </div>
+          <div class="pin">
+            <strong>Mumbai</strong>
+            <p>ROI 2.9x • Reallocating budget…</p>
+          </div>
+          <div class="pin">
+            <strong>Delhi</strong>
+            <p>ROI 5.1x • On track</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="section-header">
+        <h2>The Challenges Faced</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Inconsistent Branding</h3>
+          <p>When every store hacks together creative assets, brand identity dilutes and compliance teams stay in panic mode.</p>
+        </div>
+        <div class="card">
+          <h3>Lack of Resources</h3>
+          <p>Local teams don’t have designers or media buyers. Campaign requests pile up and launches miss the moment.</p>
+        </div>
+        <div class="card">
+          <h3>No Performance Visibility</h3>
+          <p>Manual spreadsheets mean HQ can’t see per store ROI, making budget defense and optimization impossible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution">
+      <div class="section-header">
+        <h2>A single Marketing OS built for automated ROI</h2>
+        <p>Give HQ brand control, give local teams guided execution, and give finance the live ROI they need to optimize spend.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Create</h3>
+          <p>HQ builds brand safe templates with element locking and pre approved offers.</p>
+        </div>
+        <div class="card">
+          <h3>2. Activate</h3>
+          <p>Local managers launch campaigns in minutes by filling guided forms.</p>
+        </div>
+        <div class="card">
+          <h3>3. Track</h3>
+          <p>Uplocal automatically calculates ROI per location and surfaces spend recommendations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section-header">
+        <h2>Core features for mid sized multi location brands</h2>
+      </div>
+      <table class="feature-table">
+        <tr>
+          <th>Feature</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Campaign Templates</td>
+          <td>Reusable, brand locked templates for offers, ads, and promotions.</td>
+        </tr>
+        <tr>
+          <td>Local Automation</td>
+          <td>Local teams only adjust what they’re allowed to — everything stays on brand.</td>
+        </tr>
+        <tr>
+          <td>Automated ROI &amp; Spend Optimization</td>
+          <td>Pulls ad spend and revenue to auto calc ROI, then recommends reallocations for mid-sized budgets.</td>
+        </tr>
+        <tr>
+          <td>Store Level Dashboards</td>
+          <td>Measure ROI, leads, calls, bookings, and footfalls for every location.</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="use-case">
+      <div class="card">
+        <h3>“Retail chain boosts in store footfalls by 32% using automated ROI.”</h3>
+        <p>HQ sets a festival campaign → stores localize offers → Uplocal auto runs ads → Dashboards adjust budgets and show location wise ROI.</p>
+      </div>
+    </section>
+
+    <section id="social-proof">
+      <div class="section-header">
+        <h2>Trusted by regional and mid sized brands</h2>
+        <p>Retail • F&amp;B • Auto • Beauty • Healthcare</p>
+      </div>
+      <div class="logos">
+        <span>FreshFields Market</span>
+        <span>GlowBar Studios</span>
+        <span>Coastline Auto</span>
+        <span>PureWell Clinics</span>
+        <span>UrbanCrust Pizza</span>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="section-header">
+        <h2>How it works</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-step">
+          <strong>Centralize Strategy</strong>
+          <p>Define brand guidelines, ROI targets, and budget guardrails from one place.</p>
+        </div>
+        <div class="timeline-step">
+          <strong>Localize Execution</strong>
+          <p>Empower store teams with guided workflows and locked templates.</p>
+        </div>
+        <div class="timeline-step">
+          <strong>Measure Store Wise ROI</strong>
+          <p>Track revenue, costs, and ROI with automated insights on where to shift spend.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faqs">
+      <div class="section-header">
+        <h2>FAQs</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Can HQ control brand consistency?</h4>
+          <p>Yes. Element locking safeguards key brand assets while still allowing localized tweaks.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Do store teams need marketing knowledge?</h4>
+          <p>No. If a manager can fill out a form, they can launch a multi channel campaign.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I automatically calculate ROI and optimize spending?</h4>
+          <p>Absolutely. Uplocal ingests spend and revenue data to auto calc ROI and suggest reallocations.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Does it integrate with my ad platforms &amp; POS?</h4>
+          <p>Yes. Use plug and play connectors for Meta, Google, Square, Toast, Mindbody, and more.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h2>Ready to automate ROI for every location?</h2>
+      <p>See how mid sized multi location brands cut wasted spend by 27% with Uplocal.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary">Book a Demo</button>
+        <a class="btn-secondary" href="#resources">Download ROI Playbook →</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+
